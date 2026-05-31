@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import BottomNav from './components/BottomNav'
+import UpdatePrompt from './components/UpdatePrompt'
 import Login from './pages/Login'
 import Home from './pages/Home'
 import Workouts from './pages/Workouts'
@@ -23,6 +24,8 @@ export default function App() {
         <Route path="/profile" element={<Profile />} />
       </Routes>
       {showNav && <BottomNav />}
+      {/* Global PWA update toast — shown on all pages when a new version is ready */}
+      <UpdatePrompt />
     </>
   )
 }

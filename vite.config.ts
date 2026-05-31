@@ -7,7 +7,8 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: 'autoUpdate',
+      // 'prompt' lets us detect updates and show a custom UI toast
+      registerType: 'prompt',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'icons/*.png'],
       manifest: {
         name: 'GymApp — Kinetic Dark',
@@ -39,6 +40,10 @@ export default defineConfig({
         ],
       },
       workbox: {
+        // Force the new SW to activate immediately (skip the waiting phase)
+        skipWaiting: true,
+        // Force the new SW to claim all open tabs/windows immediately
+        clientsClaim: true,
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
         runtimeCaching: [
           {
@@ -67,3 +72,4 @@ export default defineConfig({
     }),
   ],
 })
+
