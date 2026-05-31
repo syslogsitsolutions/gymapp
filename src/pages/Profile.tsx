@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 const achievements = [
   { icon: '🏆', label: '24-Week Streak', color: 'var(--lime-green)' },
   { icon: '💪', label: '100+ Workouts',  color: 'var(--electric-blue)' },
@@ -21,6 +23,8 @@ const bodyStats = [
 ]
 
 export default function Profile() {
+  const navigate = useNavigate()
+
   return (
     <main className="page animate-fade-in" id="profile-page">
       {/* Header */}
@@ -122,7 +126,12 @@ export default function Profile() {
       </section>
 
       {/* Sign out */}
-      <button className="btn btn-ghost btn-full" id="signout-btn" style={{ color: 'rgba(255,100,100,0.7)', border: '1px solid rgba(255,100,100,0.2)', marginBottom: 'var(--space-md)' }}>
+      <button
+        className="btn btn-ghost btn-full"
+        id="signout-btn"
+        onClick={() => navigate('/login')}
+        style={{ color: 'rgba(255,100,100,0.7)', border: '1px solid rgba(255,100,100,0.2)', marginBottom: 'var(--space-md)' }}
+      >
         <span className="material-symbols-rounded" style={{ fontSize: 18 }}>logout</span>
         Sign Out
       </button>
